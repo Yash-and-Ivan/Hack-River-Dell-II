@@ -18,14 +18,17 @@
     <div class="titleCard">
       <h1 class="text-center">Twitter Feels</h1>
       <p class="text-center"> Request. Analyze. Display </p>
-      <div class = "form-center"><form>
+      <div class = "form-center"><form onsubmit="updateWindow(); return false">
         <input type="text" placeholder='  enter search to analyze' id="toAnalyze">
         <input class="button-primary" type="submit" value="Analyze!">
+        <p class="text-center" id = "formOut"></p>
       </form></div>
     </div>
 
   </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src = "/js/index.js"></script>;
 </body>
 
 </html>

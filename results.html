@@ -1,0 +1,54 @@
+<html>
+
+<head>
+  <title> Twitter Feels </title>
+
+  <!--libraries and fonts-->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link href="/vendor/skeleton/normalize.css" rel="stylesheet" type="text/css" />
+  <link href="/vendor/skeleton/skeleton.css" rel="stylesheet" type="text/css" />
+  <link href="/vendor/font-awesome/font-awesome.css" rel="stylesheet" type="text/css" />
+
+  <!--other stylesheets -->
+  <link href="/css/main.css" rel="stylesheet" type="text/css" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body onload="analyzeAndDisplay();" style="overflow: auto">
+  <div class="container">
+    <div class="results-title">
+      <h1> Results for: <div id = "searchQuery"> </div> </h1>
+    </div>
+
+    <!-- sentiment card -->
+    <div class="result-card">
+      <h3 class="card-title"> Sentiment </h3>
+      <hr>
+      <canvas id="sentimentChart" width="100%" height="20"></canvas>
+    </div>
+    <div>
+      </br>
+    </div>
+    <div class="result-card">
+      <h3 class="card-title"> Emotion </h3>
+      <hr>
+      <canvas id="emotionChart" width="100%" height="30%"></canvas>
+      <br>
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp; On average, the strongest emotion expressed by Tweets about ... is ... .
+      </p>
+      <br>
+    </div>
+    <div id="my_favorite_latin_words" style="width: 550px; height: 350px; border: 1px solid #ccc;"></div>
+    <br><br><br><br><br><br><br>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>
+  <script src="/js/testResults.js"></script>
+  <script src="/js/analyze.js"></script>
+
+</body>
+
+</html>

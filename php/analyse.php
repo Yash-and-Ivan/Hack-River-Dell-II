@@ -13,7 +13,7 @@
 
   $out = (object) null; //object we return
 
-  $searchParams = "#donaldTrump";
+  $searchParams = "#DonaldTrump";
   $numTweets = 1000;
 
   //configure settings
@@ -115,7 +115,8 @@ $out->joyArr = $joy;
 $out->fearArr = $fear;
 $out->disgustArr = $disgust;
 $out->angerArr = $anger;
-echo '<pre>' . var_export($out, true) . '</pre>';
+$out->tweetText = $tweetBatches;
+echo json_encode($out);
 
 
 

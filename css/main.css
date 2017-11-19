@@ -28,6 +28,22 @@
 .form-center {
   text-align: center;
 }
+.results-title {
+  margin-top: 5%;
+  margin-bottom: 10%;
+  text-align: center;
+}
+.result-card {
+  border-color: lightgrey;
+  border-radius: 5px;
+  border-style: solid;
+}
+.card-title {
+  padding-left: 5%;
+  padding-bottom: 0%;
+  margin-bottom: 0%;
+  padding-top: 3%;
+}
 input[type=text]{
   width: 50%;
   text-align: center;
