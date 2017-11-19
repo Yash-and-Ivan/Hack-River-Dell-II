@@ -17,23 +17,22 @@ function displayResults(analyzed) {
         label: 'Negative',
         data: generateScatterData(analyzed, -1),
         pointRadius: 40,
-        pointBackgroundColor: "rgba(255, 0, 0, 0.1)",
-        pointBorderColor: "rgba(255, 0, 0, 0.1)",
-        backgroundColor: "rgba(255, 0, 0, 0.5)",
-        backgroundBorderColor: "rgba(255, 0, 0, 1)"
+        pointBackgroundColor: "rgba(255, 0, 0, 0.05)",
+        pointBorderColor: "rgba(255, 0, 0, 0.05)",
+        backgroundColor: "rgba(255, 0, 0, 0.5)"
       }, {
         label: 'Neutral',
         data: generateScatterData(analyzed, 0),
         pointRadius: 40,
-        pointBackgroundColor: "rgba(100, 100, 100, 0.1)",
-        pointBorderColor: "rgba(100, 100, 0, 0.1)",
+        pointBackgroundColor: "rgba(100, 100, 100, 0.05)",
+        pointBorderColor: "rgba(100, 100, 0, 0.05)",
         backgroundColor: "rgba(100, 100, 0, 0.5)"
       }, {
         label: 'Positive',
         data: generateScatterData(analyzed, 1),
         pointRadius: 40,
-        pointBackgroundColor: "rgba(0, 255, 0, 0.1)",
-        pointBorderColor: "rgba(0, 255, 0, 0.1)",
+        pointBackgroundColor: "rgba(0, 255, 0, 0.05)",
+        pointBorderColor: "rgba(0, 255, 0, 0.05)",
         backgroundColor: "rgba(0, 255, 0, 0.5)"
       }]
     },
@@ -42,7 +41,11 @@ function displayResults(analyzed) {
       scales: {
         xAxes: [{
           type: 'linear',
-          position: 'bottom'
+          position: 'bottom',
+          ticks: {
+            min: -1.1,
+            max: 1.1
+          }
         }],
         yAxes: [{
           display: false
@@ -80,9 +83,41 @@ function displayResults(analyzed) {
     }
   });
 
-  //creating word clouds
-  $("#my_favorite_latin_words").jQCloud(wordFreq((testResults.usedHashtags).join(" ")), {
-    shape: "rectangular",
+  //creating word clouds, but we have to clean everything up first
+  hashtagData = (analyzed.usedHashtags).join(" ");
+  hashtagData = hashtagData.toLowerCase();
+  textData = (analyzed.tweetText).join(" ");
+  textData = textData.toLowerCase();
+  textData = textData.replaceAll("-", "");
+  textData = textData.replaceAll("?", "");
+  textData = textData.replaceAll(".", "");
+  textData = textData.replaceAll("!", "");
+  textData = textData.replaceAll(",", "");
+  textData = textData.replaceAll("#", "");
+  textData = textData.replaceAll('"', "");
+  textData = textData.replaceAll("'", "");
+  textData = textData.replaceAll("#", "");
+  textData = textData.replaceAll(")", "");
+  textData = textData.replaceAll("(", "");
+  textData = textData.replaceAll("[", "");
+  textData = textData.replaceAll("]", "");
+  textData = textData.replaceAll("{", "");
+  textData = textData.replaceAll("}", "");
+  textData = textData.replaceAll("+", "");
+  textData = textData.replaceAll("-", "");
+  textData = textData.replaceAll("&", "");
+  mentionData = (analyzed.taggedPeople).join(" ");
+  mentionData = mentionData.toLowerCase();
+  $("#hashCloud").jQCloud(wordFreq(hashtagData), {
+    shape: "spiral",
+    autoResize: true
+  });
+  $("#wordCloud").jQCloud(wordFreq(textData), {
+    shape: "spiral",
+    autoResize: true
+  });
+  $("#mentionCloud").jQCloud(wordFreq(mentionData), {
+    shape: "spiral",
     autoResize: true
   });
 }
@@ -107,6 +142,10 @@ function wordFreq(string) {
   }
   return out;
 }
+String.prototype.replaceAll = function(search, replacement) {
+  var target = this;
+  return target.split(search).join(replacement);
+};
 
 function generateEmotionData(dataIn) {
   function getSum(total, num) {

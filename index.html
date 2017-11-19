@@ -13,22 +13,29 @@
   <link href="/css/main.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body onload="doBackgroundChart()">
   <div class="container">
     <div class="titleCard">
+      <center>
+        <img width="15%" src="/img/twitteranalysislogo.jpeg"></img>
+      </center>
+      <br>
       <h1 class="text-center">Twitter Feels</h1>
       <p class="text-center"> Request. Analyze. Display </p>
-      <div class = "form-center"><form onsubmit="updateWindow(); return false">
-        <input type="text" placeholder='  enter search to analyze' id="toAnalyze">
-        <input class="button-primary" type="submit" value="Analyze!">
-        <p class="text-center" id = "formOut"></p>
-      </form></div>
+      <div class="form-center">
+        <form onsubmit="updateWindow(); return false">
+          <input type="text" placeholder='  enter search to analyze' id="toAnalyze">
+          <input class="button-primary" type="submit" value="Analyze!">
+          <p class="text-center" id="formOut"></p>
+        </form>
+      </div>
     </div>
-
   </div>
+  <canvas id="backgroundChart" width="100%" height="100%"></canvas>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src = "/js/index.js"></script>;
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+  <script src="/js/index.js"></script>;
 </body>
 
 </html>

@@ -17,14 +17,20 @@
 <body onload="analyzeAndDisplay();" style="overflow: auto">
   <div class="container">
     <div class="results-title">
-      <h1> Results for: <div id = "searchQuery"> </div> </h1>
+      <h1> Results for <br> <div id = "searchQuery"> </div> </h1>
     </div>
 
     <!-- sentiment card -->
     <div class="result-card">
       <h3 class="card-title"> Sentiment </h3>
       <hr>
-      <canvas id="sentimentChart" width="100%" height="20"></canvas>
+      <div class="row">
+        <div class="one columns"><br></div>
+        <div class="ten columns">
+          <canvas id="sentimentChart" width="100%" height="20"></canvas>
+        </div>
+        <div class="one column"><br></div>
+      </div>
     </div>
     <div>
       </br>
@@ -39,7 +45,39 @@
       </p>
       <br>
     </div>
-    <div id="my_favorite_latin_words" style="width: 550px; height: 350px; border: 1px solid #ccc;"></div>
+    <div>
+      </br>
+    </div>
+    <div class="result-card">
+      <div class="row">
+        <h3 class="card-title"> Word, Hashtag, and Mention Frequency Analysis </h3>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="four columns"><br></div>
+        <div class="seven columns">
+          <div id="hashCloud" style="width: 100%; height: 350px; border: 1px solid #ccc;"></div>
+        </div>
+        <div class="one column"><br></div>
+      </div>
+      <br> <br>
+      <div class="row">
+        <div class="one columns"><br></div>
+        <div class="seven columns">
+          <div id="wordCloud" style="width: 550px; height: 350px; border: 1px solid #ccc;"></div>
+        </div>
+        <div class="four column"><br></div>
+      </div>
+      <br> <br>
+      <div class="row">
+        <div class="four columns"><br></div>
+        <div class="seven columns">
+          <div id="mentionCloud" style="width: 550px; height: 350px; border: 1px solid #ccc;"></div>
+        </div>
+        <div class="one column"><br></div>
+      </div>
+      <br> <br>
+    </div>
     <br><br><br><br><br><br><br>
   </div>
 

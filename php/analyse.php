@@ -13,8 +13,8 @@
 
   $out = (object) null; //object we return
 
-  $searchParams = "#DonaldTrump";
-  $numTweets = 1000;
+  $searchParams = "#suckadick";
+  $numTweets = 100;
 
   //configure settings
   $twitterSettings = array(

@@ -1,56 +1,85 @@
+#chartBg{
+  position:absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width:100%;
+  height:100%;
+  background: rgba(124, 241, 255, 0.1);
+}
+#backgroundChart {
+  z-index: -1 !important;
+  position:absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-center {
+text-align: center;
+}
+
 .titleCard {
-  margin-top: 20%;
-  margin-left: 20%;
-  margin-right: 20%;
+  background-color: white;
+  z-index: 0;
+  width: 50%;
+  margin-top: 25%;
+  margin-left: 25%;
   padding-top: 5%;
   padding-bottom: 2.5%;
-
   border-color: lightgrey;
   border-radius: 5px;
   border-style: solid;
-
   animation-name: spin;
   animation-duration: 1s;
 }
+
 @keyframes spin {
-  0%{
-    transform: rotate(20deg) translate(100%, 0%);
+  0% {
+    transform: rotate(270deg) translate(100%, 0%);
     opacity: 0;
   }
-  100%{
+  100% {
     transform: rotate(0deg);
     opacity: 1;
   }
 }
+
 .text-center {
   text-align: center;
 }
+
 .form-center {
   text-align: center;
 }
+
 .results-title {
   margin-top: 5%;
   margin-bottom: 10%;
   text-align: center;
 }
+
 .result-card {
   border-color: lightgrey;
   border-radius: 5px;
   border-style: solid;
 }
+
 .card-title {
   padding-left: 5%;
   padding-bottom: 0%;
   margin-bottom: 0%;
   padding-top: 3%;
 }
-input[type=text]{
+
+input[type=text] {
   width: 50%;
   text-align: center;
 }
-input[type=submit]{
+
+input[type=submit] {
   width: 25%;
 }
+
 body {
   overflow: hidden;
 }
