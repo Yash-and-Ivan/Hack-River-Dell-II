@@ -1,13 +1,50 @@
 function analyzeAndDisplay() {
-  displayResults(testResults);
-
+  $.post("/php/analyse.php", {
+    query: searchQue
+  }, function(result) {
+    displayResults(JSON.parse(result));
+    $("#loadingCover").remove();
+    $("#loadingImg").remove();
+    $("#loadingText").remove();
+  })
 }
 
 function displayResults(analyzed) {
-  //first show what we are analyzing
-  $("#searchQuery").replaceWith(analyzed.query);
+  //first show what we are analyzing and calculate reliability
+  $(".searchQuery").html(analyzed.query);
 
 
+  if (analyzed.tweetText.length <= 20) {
+    $("#sr1").html("Poor");
+  } else if (analyzed.tweetText.length <= 50) {
+    $("#sr2").html("Medium");
+  } else {
+    $("#sr3").html("Good");
+  };
+  //paste sentiment stuff
+  sentAvg = Math.floor(getAvg(analyzed.sentimentArr) * 100) / 100;
+  $("#avgSent").html(sentAvg);
+  if (sentAvg < 0) {
+    $(".sentCon").html("negative");
+  } else {
+    $(".sentCon").html("positive");
+  }
+  stdDev = Math.floor(analyzed.sentimentArr.standartDeviation() * 100) / 100;
+  $("#stdDevi").html(stdDev);
+
+  if (stdDev > 0.66) {
+    $('#checkAbnormal').html("highly");
+  } else {
+    $('#checkAbnormal').html("not particularly");
+  }
+  emotionData = generateEmotionData(analyzed);
+  emotionNames = ['Happiness', 'Sadness', 'Anger', 'Disgust', 'Fear'];
+
+  //find largest and smallest emotion index
+  largestEmIndex = emotionData.indexOf(Math.max(...emotionData));
+  $("#emStrong").html(emotionNames[largestEmIndex]);
+  smallestEmIndex = emotionData.indexOf(Math.min(...emotionData));
+  $("#emWeak").html(emotionNames[smallestEmIndex]);
   //sentiment chart
   var sentimentChart = document.getElementById("sentimentChart").getContext('2d');
   var sentChart = new Chart(sentimentChart, {
@@ -120,6 +157,28 @@ function displayResults(analyzed) {
     shape: "spiral",
     autoResize: true
   });
+}
+//FUNCTIONS
+Array.prototype.standartDeviation = function() {
+  var i, j, total = 0,
+    mean = 0,
+    diffSqredArr = [];
+  for (i = 0; i < this.length; i += 1) {
+    total += this[i];
+  }
+  mean = total / this.length;
+  for (j = 0; j < this.length; j += 1) {
+    diffSqredArr.push(Math.pow((this[j] - mean), 2));
+  }
+  return (Math.sqrt(diffSqredArr.reduce(function(firstEl, nextEl) {
+    return firstEl + nextEl;
+  }) / this.length));
+};
+
+function getAvg(listIn) {
+  return listIn.reduce(function(p, c) {
+    return p + c;
+  }) / listIn.length;
 }
 
 function wordFreq(string) {

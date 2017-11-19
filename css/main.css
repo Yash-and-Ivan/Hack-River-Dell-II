@@ -1,28 +1,73 @@
-#chartBg{
-  position:absolute;
+#loadingCover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 101;
+}
+
+#loadingText {
+  text-align: center;
+  position: fixed;
+  width: 30%;
+  top: 55%;
+  left: 35%;
+  z-index: 105;
+}
+
+#loadingImg {
+  position: fixed;
+  width: 10%;
+  top: 30%;
+  left: 45%;
+  z-index: 105;
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#searchQuery {
+  color: rgba(20, 0, 255, 0.5)
+}
+
+#chartBg {
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -2;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   background: rgba(124, 241, 255, 0.1);
 }
+
 #backgroundChart {
   z-index: -1 !important;
-  position:absolute;
+  position: absolute;
   top: 0;
   left: 0;
 }
 
 .image-center {
-text-align: center;
+  text-align: center;
 }
 
 .titleCard {
   background-color: white;
   z-index: 0;
   width: 50%;
-  margin-top: 25%;
+  margin-top: 20%;
   margin-left: 25%;
   padding-top: 5%;
   padding-bottom: 2.5%;

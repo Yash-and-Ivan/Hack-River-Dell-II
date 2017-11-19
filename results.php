@@ -15,9 +15,23 @@
 </head>
 
 <body onload="analyzeAndDisplay();" style="overflow: auto">
+  <div id = "loadingCover">
+    <br>
+  </div>
+  <img id = "loadingImg" src = "/img/loading_icon.png"> </img>
+  <div id = "loadingText">
+    <h3> Loading... </h3>
+    <p> (refresh page if this takes more than a minute) </p>
+  </div>
+  <script>var searchQue = unescape(<?php echo "'".$_GET["searchQuery"]."'"?>);</script>
   <div class="container">
     <div class="results-title">
-      <h1> Results for <br> <div id = "searchQuery"> </div> </h1>
+      <h1> Results for: <span class = "searchQuery"> </span> </h1>
+      <h3> Search reliability:
+        <span id="sr3" style="color:green"></span>
+        <span id="sr2" style="color:orange"></span>
+        <span id="sr1" style="color:red"></span>
+      </h3>
     </div>
 
     <!-- sentiment card -->
@@ -31,6 +45,19 @@
         </div>
         <div class="one column"><br></div>
       </div>
+      <br>
+      <div class="row">
+        <div class="one columns"><br></div>
+        <div class="ten columns">
+          <p>
+            The average sentiment is <code id="avgSent"></code>. This suggests a common <code class="sentCon"></code> connotation with the term association with the search. The standard deviation is <code id="stdDevi"></code>, suggesting that the results
+            are <code id="checkAbnormal"></code> variable.
+          </p>
+        </div>
+        <div class="one column"><br></div>
+        <br>
+      </div>
+      <br>
     </div>
     <div>
       </br>
@@ -40,9 +67,16 @@
       <hr>
       <canvas id="emotionChart" width="100%" height="30%"></canvas>
       <br>
-      <p>
-        &nbsp;&nbsp;&nbsp;&nbsp; On average, the strongest emotion expressed by Tweets about ... is ... .
-      </p>
+      <div class="row">
+        <div class="one columns"><br></div>
+        <div class="ten columns">
+          <p>
+            The search query <code class = "searchQuery"> </code> yields most commonly emotional response of <code id = "emStrong"> </code>. The emotion <code id = "emWeak"> </code> is found the least frequently based on data collected from the time of the search. The emotional analysis leads to the conclusion that the hashtag is most commonly associated with a <code class="sentCon"></code> connotation.
+          </p>
+        </div>
+        <div class="one column"><br></div>
+        <br>
+      </div>
       <br>
     </div>
     <div>
@@ -78,7 +112,15 @@
       </div>
       <br> <br>
     </div>
-    <br><br><br><br><br><br><br>
+    <br><br><br>
+    <div class="row">
+      <div class="four columns"><br></div>
+      <div class="four columns">
+        <button class = "u-full-width" onClick = "window.location = 'index.html';"  style = "text-align:center"> Back </button>
+      </div>
+      <div class="four columns"><br></div>
+    </div>
+    <br><br><br>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

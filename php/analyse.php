@@ -10,10 +10,11 @@
   use WatsonSDK\Services\NaturalLanguageUnderstanding\AnalyzeModel;
 
   error_reporting(E_ALL ^ E_NOTICE);
+  set_time_limit(120);
 
   $out = (object) null; //object we return
 
-  $searchParams = "#suckadick";
+  $searchParams = $_POST["query"];
   $numTweets = 100;
 
   //configure settings
@@ -37,13 +38,10 @@
   //batches for tweet analysis
   $tweetBatches = [];
 
-  //get tweets in batches of 100
-  $curMaxTweetId = "10000000000000000000000000000000";
-
   for($i = 0; $i < 1; $i++){
    //get tweets and decode them
 
-   $twitterResults = $twitter->setGetfield("?lang=en&result_type=recent&count=200&q=".$searchParams."&maxId=".$curMaxTweetId)
+   $twitterResults = $twitter->setGetfield("?lang=en&result_type=recent&count=200&q=".$searchParams)
       ->buildOauth($url, 'GET')
       ->performRequest();
    $twitterResults = json_decode($twitterResults);
