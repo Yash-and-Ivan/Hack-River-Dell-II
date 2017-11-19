@@ -9,7 +9,7 @@ function updateWindow() {
 function doBackgroundChart() {
   suggestions = ["#donaldtrump", "#life", "#cars", "#republican", "#democrat", "#russia",
                  "#food", "#potus", "#hillary", "#bringbackobama", "#america", "#school",
-                 "#work", "#hack"]
+                 "#work", "#hack", "#rohingya", "#college", "#party"]
   suggestions = shuffle(suggestions);
   $("#res1").html(suggestions[0]);
   $("#res2").html(suggestions[1]);

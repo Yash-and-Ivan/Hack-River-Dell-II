@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title> Twitter Feels </title>
+  <title> Search Results </title>
 
   <!--libraries and fonts-->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
