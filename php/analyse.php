@@ -1,5 +1,5 @@
 <?php
-  require '/../vendor/autoload.php';
+  require '../vendor/autoload.php';
   use WatsonSDK\Common\HttpClient;
   use WatsonSDK\Common\HttpClientConfiguration;
   use WatsonSDK\Common\HttpClientException;
